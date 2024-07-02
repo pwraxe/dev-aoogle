@@ -64,7 +64,7 @@ val experienceList = listOf (
 
     ExperienceData(
         id = 3,
-        image = Res.drawable.logo_innovations,
+        image = Res.drawable.logo_inno_short,
         titlePosition = Details.ROLE.SR_POS,
         websiteLink = Details.LINKS.URL_COMP_2,
         companyName = Details.COMPANY.INNOVATIONS,

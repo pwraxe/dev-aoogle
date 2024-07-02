@@ -1,6 +1,7 @@
 package common_ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -39,7 +40,10 @@ fun questionsItem (
 
             Text(
                 text = question.question,
-                modifier = modifier.weight(1f),
+                modifier = modifier
+                    .weight(1f)
+                    .clickable { onClickOpen(question.id) }
+                    .pointerHoverIcon(icon = PointerIcon.Hand),
                 fontSize = 16.sp,
                 color = Color.White
             )

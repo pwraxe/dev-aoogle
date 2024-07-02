@@ -22,7 +22,7 @@ val projectsListPre = listOf(
     PageAllItemData(
         image = Res.drawable.logo_the_guru,
         heading = "Own Crafted Android App",
-        url = "https://play.google.com/store/apps/details?id=com.codexdroid.theguru",
+        url = "https://play.google.com/store/apps/",
         title = "The Guru",
         desc = "Satsang Members can view all and upcoming details satsanga's, everyone can see everyone's updates on availability, request for seva, Notification, navigate to place, List of events",
         duration = "March 2024 - Present",
@@ -31,7 +31,7 @@ val projectsListPre = listOf(
     ),
 
     PageAllItemData (
-        image = Res.drawable.ic_erxpharma,
+        image = Res.drawable.logo_erx,
         heading = "Organizational Android App from scratch",
         url = "https://play.google.com/store/apps/details?id=com.svsion.erxpharma",
         title = "ERxPharmaPro",
@@ -100,7 +100,7 @@ val projectsListPost = listOf(
     PageAllItemData(
         image = Res.drawable.logo_sky_recharge,
         heading = "Organizational Android App from scratch",
-        url = "https://play.google.com/store/apps/details?id=com.skyonlinerechargeservices/",
+        url = "https://play.google.com/store/apps/details?id=com.skyonlinerechargeservices",
         title = "Sky Recharge App",
         desc = "Sky Online Recharge Services Recharge & Bill Payment Application, Recharge online for agents, recharge for mobile, recharge for DTC, online quick recharge, many more recharges in future.",
         duration = "Feb 2022 - April 2022",
@@ -134,7 +134,7 @@ val projectsListPost = listOf(
     PageAllItemData(
         image = Res.drawable.logo_glasswing,
         heading = "Organizational Android App from scratch and existing",
-        url = "https://play.google.com/store/apps/",
+        url = "https://play.google.com/store/apps/details?id=in.glasswing.partner",
         title = "Glasswing Partner",
         desc = "GLASSWING is a Technology enables logistics service provider that is working to transform and reinvent the supply chain with technology-backed full-service trucking, GLASSWING is creating a solid network of vehicles, drivers to deliver and bring transparency, reliability and efficiency with effective use of Technology",
         duration = "Nov 2021 - June 2022",
@@ -145,7 +145,7 @@ val projectsListPost = listOf(
     PageAllItemData(
         image = Res.drawable.logo_kichenbaba,
         heading = "Existing App, Java + Kotlin",
-        url = "https://play.google.com/store/apps/",
+        url = "https://play.google.com/store/apps/developer?id=Arcelor+Technology+Private+Limited",
         title = "Kichenbaba",
         desc = "Seller of kichenbaba serve their customer through kichenbaba store Most sellers of kichenbaba enjoy serving food and earning more with kichenbaba Join Us and enjoy to serv food well to your customer",
         duration = "March 2022 - June 2022",

@@ -25,7 +25,6 @@ import data.ImageData
 import data.imageList
 import org.jetbrains.compose.resources.painterResource
 
-
 @Composable
 fun images(modifier: Modifier = Modifier) {
 

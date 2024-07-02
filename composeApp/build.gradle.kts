@@ -39,8 +39,8 @@ kotlin {
             implementation(compose.materialIconsExtended)
             implementation(compose.animation)
             implementation(compose.animationGraphics)
-            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
 
+            //implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
             implementation("org.osmdroid:osmdroid-android:6.1.18")
         }
     }

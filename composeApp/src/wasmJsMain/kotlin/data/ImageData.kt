@@ -36,7 +36,21 @@ val imageList = listOf(
     ImageData(16,Res.drawable.logo_pinnale,Details.COMPANY.PINNACLE,"First Company | Service Based company, Pune based company"),
     ImageData(17,Res.drawable.logo_sky_recharge,"Online Sky Recharge Service","Online Recharge, Recharge App | Mobile App for multi recharge"),
     ImageData(18,Res.drawable.logo_svit,"SVIT Nashik","Engineering Collage in Nashik | Engineering, Pharmacy, Pravara | Degree Collage"),
-    ImageData(19,Res.drawable.logo_the_guru,"The Guru App","Seva, Satsang | The guru")
+    ImageData(19,Res.drawable.logo_the_guru,"The Guru App","Seva, Satsang | The guru"),
+    ImageData(20,Res.drawable.logo_erx, "ERxPharmaPro Icon","Logo Erx | icon erx | Doctor Software Service | Digital Prescription | OPD | IPD"),
 
     //Add Certificates
-)
+    ImageData(21,Res.drawable.cert_3rd_rank,"Third rank in Class (2017)","Award 2017 | Certificate | Class Certificate"),
+    ImageData(22,Res.drawable.cert_apna_clg,"DSA Certificate","DSA | Learning Certificate | Class Certificate | Apna Collage"),
+//    ImageData(23,Res.drawable.cert_degree,"Degree Certificate","Bachelor of Engineering | Degree Certificate | Engineering Collage"),
+    ImageData(24,Res.drawable.cert_skill_univ,"Skill Universe Certificate","National Engineering Skill Development | Certificate of Participate"),
+    ImageData(25,Res.drawable.cert_spoken_c,"C Certificate of Spoken Tutorial","Certificate | C Language | Spoken Tutorial | IIT Bombay"),
+    ImageData(26,Res.drawable.cert_spoken_cpp,"C++ Certificate of Spoken Tutorial","C++ | CPP | Certificate of C Plus Plus | Spoken | IIT Bombay"),
+    ImageData(27,Res.drawable.cert_spoken_java,"Java Certificate of Spoken Tutorial","Java | Training | Spoken Tutorial | IIT Bombay Java Course"),
+    ImageData(28,Res.drawable.cert_unanth_learn_java,"Java Certificate of Unanth Learning","Java Training Certificate | Unanth Learning"),
+    ImageData(29,Res.drawable.cert_unanth_comp_java,"Completion Java Certificate of Unanth Learning","Java Completion | Certificate | Course | Unanth"),
+    ImageData(30,Res.drawable.cert_unanth_mysql_basic,"MySQL Certificate of Unanth Learning","MySQL | Database | Certificate | Course | Unanth"),
+    ImageData(31,Res.drawable.cert_unanth_php_basic,"PHP Certificate of Unanth Learning","PHP | Certificate | Course | Unanth"),
+
+
+    )

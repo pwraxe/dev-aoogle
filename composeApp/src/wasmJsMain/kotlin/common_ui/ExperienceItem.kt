@@ -1,6 +1,7 @@
 package common_ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -17,7 +18,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.PointerIcon
+import androidx.compose.ui.input.pointer.pointerHoverIcon
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -29,6 +33,8 @@ import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun experienceItems(experienceData: ExperienceData, modifier: Modifier = Modifier) {
+
+    val localUri = LocalUriHandler.current
 
     Column (modifier = modifier.padding(vertical = 16.dp)) {
         Row (verticalAlignment = Alignment.CenterVertically){
@@ -62,7 +68,9 @@ fun experienceItems(experienceData: ExperienceData, modifier: Modifier = Modifie
                 color = Color(0XFF99C3FF),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-                modifier = modifier.padding(vertical = 4.dp)
+                modifier = modifier.padding(vertical = 4.dp).clickable {
+                    localUri.openUri(experienceData.websiteLink)
+                }.pointerHoverIcon(icon = PointerIcon.Hand)
             )
             Icon(
                 Icons.Default.CheckCircle,
