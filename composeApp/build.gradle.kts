@@ -36,12 +36,17 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
 
             implementation(compose.material3)
+            implementation(compose.material3)
             implementation(compose.materialIconsExtended)
             implementation(compose.animation)
             implementation(compose.animationGraphics)
 
             //implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
             implementation("org.osmdroid:osmdroid-android:6.1.18")
+
+            //implementation("androidx.compose.material3:material3-window-size-class:1.1.2")
+            implementation("dev.chrisbanes.material3:material3-window-size-class-multiplatform:0.5.0")
+
         }
     }
 }

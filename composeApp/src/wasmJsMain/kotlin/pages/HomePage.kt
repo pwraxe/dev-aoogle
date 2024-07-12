@@ -9,6 +9,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -30,9 +33,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import common_ui.profileTooltip
 import common_ui.topMenu
+import kotlinx.browser.window
 import utils.showSnack
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class, ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
 fun homePage(
     onNavigate: (Int, String) -> Unit,
@@ -51,10 +55,13 @@ fun homePage(
 
     val snackbarHostState = remember { SnackbarHostState() }
 
+    val windowSizeClass = calculateWindowSizeClass()
+
     Scaffold(
         snackbarHost = {
             SnackbarHost(snackbarHostState, modifier = modifier)
         }) {
+
 
         Box (modifier = modifier
             .padding(it)
@@ -91,9 +98,18 @@ fun homePage(
                 modifier = modifier
                     .align(alignment = Alignment.Center)
                     .padding(bottom = 100.dp)) {
+
+                val fontSize = when(windowSizeClass.widthSizeClass) {
+                    WindowWidthSizeClass.Compact -> 60.sp
+                    WindowWidthSizeClass.Medium -> 80.sp
+                    else -> {
+                        100.sp
+                    }
+                }
+
                 Text (
                     text = "Google",
-                    fontSize = 100.sp,
+                    fontSize = fontSize,
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
                     modifier = modifier

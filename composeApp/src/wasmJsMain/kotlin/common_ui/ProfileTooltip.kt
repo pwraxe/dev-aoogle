@@ -21,6 +21,8 @@ fun profileTooltip(modifier: Modifier = Modifier) {
             )
             .padding(horizontal = 6.dp, vertical = 4.dp)
     ) {
+
+
         Text(
             text = "Google Account",
             fontWeight = FontWeight.Bold,
