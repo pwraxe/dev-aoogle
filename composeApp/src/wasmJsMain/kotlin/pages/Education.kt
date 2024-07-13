@@ -6,6 +6,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -20,6 +23,7 @@ import common_ui.*
 import data.*
 import org.jetbrains.compose.resources.painterResource
 
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
 fun education(modifier: Modifier) {
 
@@ -90,10 +94,11 @@ fun education(modifier: Modifier) {
             }
         }
 
-        verticalLine(modifier = modifier.padding(horizontal = 10.dp, vertical = 30.dp))
-
-        Column (modifier = modifier.weight(1f)){
-            sideInfo()
+        if (calculateWindowSizeClass().widthSizeClass == WindowWidthSizeClass.Expanded) {
+            verticalLine(modifier = modifier.padding(horizontal = 10.dp, vertical = 30.dp))
+            Column (modifier = modifier.weight(1f)){
+                sideInfo()
+            }
         }
     }
 }

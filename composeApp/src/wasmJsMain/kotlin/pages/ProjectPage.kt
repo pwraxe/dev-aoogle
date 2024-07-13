@@ -10,6 +10,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,6 +28,7 @@ import common_ui.*
 import data.*
 import org.jetbrains.compose.resources.painterResource
 
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
 fun project(modifier: Modifier = Modifier) {
 
@@ -78,10 +82,14 @@ fun project(modifier: Modifier = Modifier) {
             }
         }
 
-        verticalLine(modifier = modifier.padding(horizontal = 10.dp, vertical = 30.dp))
 
-        Column (modifier = modifier.weight(1f)){
-            sideInfo()
+        if (calculateWindowSizeClass().widthSizeClass == WindowWidthSizeClass.Expanded) {
+            verticalLine(modifier = modifier.padding(horizontal = 10.dp, vertical = 30.dp))
+
+            Column (modifier = modifier.weight(1f)){
+                sideInfo()
+            }
         }
+
     }
 }

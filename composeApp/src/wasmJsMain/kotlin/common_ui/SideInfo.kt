@@ -11,6 +11,9 @@ import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,13 +32,13 @@ import androidx.compose.ui.unit.sp
 import aoogle.composeapp.generated.resources.Res
 import aoogle.composeapp.generated.resources.avatar
 import aoogle.composeapp.generated.resources.ic_globe_asia
-import data.SocialData
-import data.socials
+import data.*
 import org.jetbrains.compose.resources.painterResource
 import utils.getActualExperience
 import utils.getAge
 
 
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class, ExperimentalLayoutApi::class)
 @Composable
 fun sideInfo(modifier: Modifier = Modifier) {
 
@@ -43,101 +46,115 @@ fun sideInfo(modifier: Modifier = Modifier) {
     var socialUri by remember { mutableStateOf("") }
     val uriHandler = LocalUriHandler.current
 
-    Column (modifier = modifier
-        .fillMaxSize()
+    var showInfo by remember { mutableStateOf(true) }
+    showInfo = calculateWindowSizeClass().widthSizeClass == WindowWidthSizeClass.Expanded
 
-        .padding(horizontal = 30.dp, vertical = 30.dp)
-        .background(color = Color(0XFF202124))
+    Column (modifier = modifier
+        .wrapContentSize()
+        .padding(10.dp)
+
     ) {
 
-        Row (verticalAlignment = Alignment.CenterVertically) {
-            Image(
-                painter = painterResource(Res.drawable.avatar),
-                contentDescription = "Akshay Avatar",
-                modifier = modifier
-                    .size(56.dp)
-                    .clip(RoundedCornerShape(8.dp)),
-                contentScale = ContentScale.Crop,
-            )
-            Column (modifier = modifier.padding(start = 16.dp)) {
-                Text(
-                    text = "Akshay Pawar",
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.W800,
-                    color = Color.White
+        if (showInfo) {
+
+            Row (verticalAlignment = Alignment.CenterVertically) {
+                Image(
+                    painter = painterResource(Res.drawable.avatar),
+                    contentDescription = "Akshay Avatar",
+                    modifier = modifier
+                        .size(56.dp)
+                        .clip(RoundedCornerShape(8.dp)),
+                    contentScale = ContentScale.Crop,
                 )
-
-                Row (
-                    modifier = modifier.padding(top = 1.dp),
-                    verticalAlignment = Alignment.CenterVertically) {
+                Column (modifier = modifier.padding(start = 16.dp)) {
                     Text(
-                        text = "Software Developer",
-                        fontSize = 16.sp,
-                        color = Color(0XFFBDC1C6)
+                        text = "Akshay Pawar",
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.W800,
+                        color = Color.White
                     )
 
-                    smallDot()
+                    Row (
+                        modifier = modifier.padding(top = 1.dp),
+                        verticalAlignment = Alignment.CenterVertically) {
+                        Text(
+                            text = "Software Developer",
+                            fontSize = 16.sp,
+                            color = Color(0XFFBDC1C6)
+                        )
 
-                    Text(
-                        text = "Android",
-                        fontSize = 16.sp,
-                        color = Color(0XFFBDC1C6)
-                    )
+                        smallDot()
+
+                        Text(
+                            text = "Android",
+                            fontSize = 16.sp,
+                            color = Color(0XFFBDC1C6)
+                        )
+                    }
                 }
             }
-        }
+            Row(verticalAlignment = Alignment.CenterVertically) {
 
-        Row(verticalAlignment = Alignment.CenterVertically) {
+                Row (
+                    modifier = modifier
+                        .padding(top = 10.dp, bottom = 10.dp, end = 10.dp)
+                        .border(
+                            width = 1.dp,
+                            color = Color(0XFFBDC1C6),
+                            shape = CircleShape
+                        )
+                        .padding(horizontal = 10.dp, vertical = 3.dp),
 
-            Row (
-                modifier = modifier
-                    .padding(top = 10.dp, bottom = 10.dp, end = 10.dp)
-                    .border(
-                        width = 1.dp,
-                        color = Color(0XFFBDC1C6),
-                        shape = CircleShape
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+
+                    Icon(
+                        painter = painterResource(Res.drawable.ic_globe_asia),
+                        contentDescription = "Globe Asia",
+                        modifier = modifier.size(22.dp),
+                        tint = Color.White
                     )
-                    .padding(horizontal = 10.dp, vertical = 3.dp),
 
-                verticalAlignment = Alignment.CenterVertically
-            ) {
+                    Text(
+                        text = "codexdroid.com",
+                        fontSize = 14.sp,
+                        color = Color.White,
+                        modifier = modifier.padding(start = 4.dp)
+                    )
+                }
 
                 Icon(
-                    painter = painterResource(Res.drawable.ic_globe_asia),
-                    contentDescription = "Globe Asia",
-                    modifier = modifier.size(22.dp),
-                    tint = Color.White
-                )
-
-                Text(
-                    text = "codexdroid.com",
-                    fontSize = 14.sp,
-                    color = Color.White,
-                    modifier = modifier.padding(start = 4.dp)
+                    Icons.Default.CheckCircle,
+                    contentDescription = null,
+                    tint = Color(0XFF3DA288),
+                    modifier = modifier
+                        .size(26.dp)
+                        .align(alignment = Alignment.CenterVertically)
                 )
             }
 
-            Icon(
-                Icons.Default.CheckCircle,
-                contentDescription = null,
-                tint = Color(0XFF3DA288),
-                modifier = modifier
-                    .size(26.dp)
-                    .align(alignment = Alignment.CenterVertically)
-            )
+            Text(
+                text = "I am a passionate and skilled Android developer with a strong interest in the " +
+                        "\nlatest technologies, such as Kotlin. I am currently working as a Software Developer," +
+                        "\nand I am excited to be pursuing my goal of becoming a Professional Android " +
+                        "\ndeveloper at the Parent company. I am confident that the Skills and experience I have" +
+                        "\ngained in my current role will prepare me well for the next stage of my career.",
+                color = Color(0XFFBDC1C6))
         }
-
-        Text(
-            text = "I am a passionate and skilled Android developer with a strong interest in the " +
-                    "\nlatest technologies, such as Kotlin. I am currently working as a Software Developer," +
-                    "\nand I am excited to be pursuing my goal of becoming a Professional Android " +
-                    "\ndeveloper at the Parent company. I am confident that the Skills and experience I have" +
-                    "\ngained in my current role will prepare me well for the next stage of my career.",
-            color = Color(0XFFBDC1C6))
 
         Spacer(modifier = modifier.padding(6.dp))
 
-        Row {
+        Text(
+            text = "About",
+            fontSize = 20.sp,
+            color = Color.White,
+            modifier = modifier
+                .padding(bottom = 6.dp)
+                .background(color = Color(0xFF33353A))
+        )
+
+
+        Row (verticalAlignment = Alignment.CenterVertically){
             Text(
                 text = "Born: ",
                 fontWeight = FontWeight.Bold,
@@ -149,15 +166,17 @@ fun sideInfo(modifier: Modifier = Modifier) {
             Text(
                 text = "Surat, Gujrat",
                 color = Color(0XFF99C3FF),
-                modifier = modifier.pointerHoverIcon(icon = PointerIcon.Hand).clickable {
-                    uriHandler.openUri("https://maps.app.goo.gl/Vq3CD4yDLS7xb3LG6")
-                }
+                modifier = modifier
+                    .background(color = Color(0xFF33353A))
+                    .clickable {
+                        uriHandler.openUri("https://maps.app.goo.gl/Vq3CD4yDLS7xb3LG6")
+                    }
             )
         }
 
         Spacer(modifier = modifier.padding(top = 6.dp))
 
-        Row {
+        Row (verticalAlignment = Alignment.CenterVertically){
             Text(
                 text = "Education: ",
                 fontWeight = FontWeight.Bold,
@@ -169,9 +188,11 @@ fun sideInfo(modifier: Modifier = Modifier) {
             Text(
                 text = "Pune University (2019)",
                 color = Color(0XFF99C3FF),
-                modifier = modifier.pointerHoverIcon(icon = PointerIcon.Hand).clickable {
-                    uriHandler.openUri("https://maps.app.goo.gl/RoRQ1v7V8ieN2TPr8")
-                }
+                modifier = modifier
+                    .background(color = Color(0xFF33353A))
+                    .clickable {
+                        uriHandler.openUri("https://maps.app.goo.gl/RoRQ1v7V8ieN2TPr8")
+                    }
             )
         }
 
@@ -203,155 +224,117 @@ fun sideInfo(modifier: Modifier = Modifier) {
 
         Spacer(modifier = modifier.padding(top = 6.dp))
 
-        Row {
-            Text(
-                text = "Tech Stack: ",
-                fontWeight = FontWeight.Bold,
-                color = Color.White)
+        FlowRow {
 
-            Text(
-                text = "Android, ",
-                color = Color(0XFF99C3FF),
-                modifier = modifier.pointerHoverIcon(icon = PointerIcon.Hand).clickable {
-                    uriHandler.openUri("https://developer.android.com")
-                }
-            )
+            for (index in techStackDataLinks.indices) {
 
-            Text(
-                text = "Kotlin, ",
-                color = Color(0XFF99C3FF),
-                modifier = modifier.pointerHoverIcon(icon = PointerIcon.Hand).clickable {
-                    uriHandler.openUri("https://kotlinlang.org/")
-                }
-            )
+                val stackData = techStackDataLinks[index]
 
-            Text(
-                text = "Ktor, ",
-                color = Color(0XFF99C3FF),
-                modifier = modifier.pointerHoverIcon(icon = PointerIcon.Hand).clickable {
-                    uriHandler.openUri("https://ktor.io/")
+                if (index == 0) {
+                    Text(
+                        text = stackData.title,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White,
+                        modifier = modifier
+                            //.background(color = Color(0xFF33353A))
+                    )
                 }
-            )
+                else {
+                    Text(
+                        text = stackData.title,
+                        color = Color(0XFF99C3FF),
+                        modifier = modifier
+                            //.background(color = Color(0xFF33353A))
+                            .clickable {
+                                stackData.url?.let {
+                                    uriHandler.openUri(it)
+                                }
+                            }
+                    )
+                }
+            }
 
-            Text(
-                text = "Jetpack Compose, ",
-                color = Color(0XFF99C3FF),
-                modifier = modifier.pointerHoverIcon(icon = PointerIcon.Hand).clickable {
-                    uriHandler.openUri("https://developer.android.com/develop/ui/compose")
-                }
-            )
+            for (index in techStackData.indices) {
 
-            Text(
-                text = "XML, ",
-                color = Color(0XFF99C3FF),
-                modifier = modifier.pointerHoverIcon(icon = PointerIcon.Hand).clickable {
-                    uriHandler.openUri("https://en.wikipedia.org/wiki/XML")
-                }
-            )
-
-            Text(
-                text = "DSA, ",
-                color = Color(0XFF99C3FF),
-                modifier = modifier.pointerHoverIcon(icon = PointerIcon.Hand).clickable {
-                    uriHandler.openUri("https://techdevguide.withgoogle.com/paths/data-structures-and-algorithms/")
-                }
-            )
-        }
-        Row {
-            Text(
-                text = "Firebase, RestAPI, MySQL",
-                color = Color.White
-            )
+                val stackData = techStackData[index]
+                Text(
+                    text = stackData.title,
+                    color = Color.White,
+                //    modifier = modifier.background(color = Color(0xFF33353A))
+                )
+            }
         }
 
         Spacer(modifier = modifier.padding(top = 6.dp))
 
-        Row {
-            Text(
-                text = "Android Apps: ",
-                fontWeight = FontWeight.Bold,
-                color = Color.White)
+        FlowRow {
 
-            Text(
-                text = "Glasswing Partner, ",
-                color = Color(0XFF99C3FF),
-                modifier = modifier.pointerHoverIcon(icon = PointerIcon.Hand).clickable {
-                    uriHandler.openUri("https://play.google.com/store/apps/details?id=in.glasswing.partner")
+
+            for (index in androidAppsLinks.indices) {
+                val appData = androidAppsLinks[index]
+                if (index == 0) {
+                    Text(
+                        text = appData.title,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White,
+                    //    modifier = modifier.background(color = Color(0xFF33353A))
+                    )
                 }
-            )
-
-            Text(
-                text = "SKy Recharge, ",
-                color = Color(0XFF99C3FF),
-                modifier = modifier.pointerHoverIcon(icon = PointerIcon.Hand).clickable {
-                    uriHandler.openUri("https://play.google.com/store/apps/details?id=com.skyonlinerechargeservices")
+                else {
+                    Text(
+                        text = appData.title,
+                        color = Color(0XFF99C3FF),
+                        modifier = modifier
+                            //.background(color = Color(0xFF33353A))
+                            .clickable {
+                                appData.url?.let {
+                                    uriHandler.openUri(it)
+                                }
+                            }
+                    )
                 }
-            )
+            }
 
-            Text(
-                text = "ERxPharmaPro, ",
-                color = Color(0XFF99C3FF),
-                modifier = modifier.pointerHoverIcon(icon = PointerIcon.Hand).clickable {
-                    uriHandler.openUri("https://play.google.com/store/apps/details?id=com.svsion.erxpharma")
-                }
-            )
-
-            Text(
-                text = "M3 Compose, ",
-                color = Color(0XFF99C3FF),
-                modifier = modifier.pointerHoverIcon(icon = PointerIcon.Hand).clickable {
-                    uriHandler.openUri("https://play.google.com/store/apps/details?id=com.codexdroid.m3compose")
-                }
-            )
-        }
-
-        Row {
-            Text(
-                text = "Project Mamta, Parrot4Business, CreditHive POS",
-                color = Color.White
-            )
+            for (index in androidApps.indices) {
+                val appData = androidApps[index]
+                Text(
+                    text = appData.title,
+                    color = Color.White,
+                    modifier = modifier
+                        //.background(color = Color(0xFF33353A))
+                )
+            }
         }
 
         Spacer(modifier = modifier.padding(top = 6.dp))
 
-        Row {
-            Text(
-                text = "Area worked on: ",
-                fontWeight = FontWeight.Bold,
-                color = Color.White
-            )
-            Text(
-                text = "Goods Delivery, Food and Drink, Food Delivery, Health, Finance",
-                color = Color.White
-            )
-        }
-        Row {
-            Text(
-                text = "Medical, Educational",
-                color = Color.White
-            )
+        FlowRow {
+            for (index in areasWorkedOn.indices) {
+                Text(
+                    text = areasWorkedOn[index],
+                    fontWeight = if (index == 0) FontWeight.Bold else FontWeight.Normal,
+                    color = Color.White
+                )
+            }
         }
 
         Spacer(modifier = modifier.padding(top = 6.dp))
 
-        Row {
-            Text(
-                text = "Interest: ",
-                fontWeight = FontWeight.Bold,
-                color = Color.White
-            )
-
-            Text(
-                text = "Music, Coding, Driving, Gaming, Travelling, Shopping",
-                color = Color.White
-            )
+        FlowRow {
+            for (index in interest.indices) {
+                Text(
+                    text = interest[index],
+                    fontWeight = if (index == 0) FontWeight.Bold else FontWeight.Normal,
+                    color = Color.White
+                )
+            }
         }
-
 
         HorizontalDivider(
-            color = Color(0XFF313335),
+            color = Color(0XFF46484A),
             modifier = modifier
-                .padding(top = 10.dp, bottom = 10.dp))
+                //.background(color = Color(0xFF33353A))
+                .padding(vertical = 10.dp))
 
 
         Text(text = "Profiles",

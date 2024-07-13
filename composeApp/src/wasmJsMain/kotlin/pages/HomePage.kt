@@ -17,9 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.Key.Companion.Enter
-import androidx.compose.ui.input.key.KeyEvent
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.input.pointer.*
@@ -33,7 +31,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import common_ui.profileTooltip
 import common_ui.topMenu
-import kotlinx.browser.window
 import utils.showSnack
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class, ExperimentalMaterial3WindowSizeClassApi::class)
@@ -99,8 +96,10 @@ fun homePage(
                     .align(alignment = Alignment.Center)
                     .padding(bottom = 100.dp)) {
 
+
+
                 val fontSize = when(windowSizeClass.widthSizeClass) {
-                    WindowWidthSizeClass.Compact -> 60.sp
+                    WindowWidthSizeClass.Compact -> 45.sp
                     WindowWidthSizeClass.Medium -> 80.sp
                     else -> {
                         100.sp
@@ -117,14 +116,24 @@ fun homePage(
                         .padding(30.dp)
                 )
 
+
+                val editTextModifier = when(windowSizeClass.widthSizeClass) {
+                    WindowWidthSizeClass.Compact, WindowWidthSizeClass.Medium-> modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp)
+                    else -> {
+                        modifier
+                            .width(800.dp)
+                            .padding(horizontal = 60.dp)
+                    }
+                }
                 OutlinedTextField (
                     value = inputSearch,
                     placeholder = { Text("Search for me") },
                     onValueChange = { s -> inputSearch = s },
-                    modifier = modifier
+                    modifier = editTextModifier
                         .align(alignment = Alignment.CenterHorizontally)
-                        .width(800.dp)
-                        .padding(start = 60.dp, end = 60.dp).onKeyEvent {event ->
+                        .onKeyEvent {event ->
                             if (inputSearch.isNotEmpty()) {
                                 if (event.key == Enter) {
                                     val search = inputSearch.lowercase()

@@ -6,6 +6,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -15,11 +18,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import aoogle.composeapp.generated.resources.Res
 import aoogle.composeapp.generated.resources.map_experience
-import aoogle.composeapp.generated.resources.map_image
 import common_ui.*
 import data.*
 import org.jetbrains.compose.resources.painterResource
 
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
 fun experience(modifier: Modifier = Modifier) {
 
@@ -91,10 +94,12 @@ fun experience(modifier: Modifier = Modifier) {
             }
         }
 
-        verticalLine(modifier = modifier.padding(horizontal = 10.dp, vertical = 30.dp))
+        if (calculateWindowSizeClass().widthSizeClass == WindowWidthSizeClass.Expanded) {
 
-        Column (modifier = modifier.weight(1f)){
-            sideInfo()
+            verticalLine(modifier = modifier.padding(horizontal = 10.dp, vertical = 30.dp))
+            Column (modifier = modifier.weight(1f)){
+                sideInfo()
+            }
         }
     }
 }
